@@ -41,6 +41,14 @@ class FreezableTraitTest extends AbstractTestCase
             method_exists($freezable, 'unfreeze'),
             'Failed asserting method "unfreeze" exists on Freezable object'
         );
+        $this->assertTrue(
+            method_exists($freezable, 'performFreeze'),
+            'Failed asserting method "performFreeze" exists on Freezable object'
+        );
+        $this->assertTrue(
+            method_exists($freezable, 'performUnfreeze'),
+            'Failed asserting method "performUnfreeze" exists on Freezable object'
+        );
     }
 
     /**
@@ -49,10 +57,11 @@ class FreezableTraitTest extends AbstractTestCase
     public function testIsFrozenPropertyExists()
     {
         $freezable = $this->getFreezableObject();
-        
+
+        $this->assertObjectHasAttribute('isFrozen', $freezable);
         $this->assertFalse(
             $freezable->isFrozen,
-            'Failed asserting "isFrozen" property is defined and set to false in Freezable object'
+            'Failed asserting "isFrozen" property is set to false in Freezable object'
         );
     }
 
