@@ -3,12 +3,19 @@
 namespace Clippings\Freezable;
 
 /**
+ * Freezable trait:
+ * - Store frozen state
+ * - Call abstract methods for actual freezing and unfreezing.
+ *
  * @author    Haralan Dobrev <hkdobrev@gmail.com>
  * @copyright 2014, Clippings Ltd.
  * @license   http://spdx.org/licenses/BSD-3-Clause
  */
 trait FreezableTrait
 {
+    /**
+     * @var boolean Store frozen state
+     */
     public $isFrozen = false;
 
     /**
