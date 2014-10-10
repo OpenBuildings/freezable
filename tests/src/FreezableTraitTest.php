@@ -58,7 +58,7 @@ class FreezableTraitTest extends AbstractTestCase
     /**
      * @coversNothing
      */
-    public function testfrozenPropertyExists()
+    public function testFrozenPropertyExists()
     {
         $freezable = $this->getFreezableObject();
 

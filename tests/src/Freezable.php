@@ -4,9 +4,6 @@ namespace Clippings\Freezable\Test;
 
 use Clippings\Freezable\FreezableTrait;
 
-/**
- * @coversDefaultClass Clippings\Freezable\FreezableTrait
- */
 class Freezable
 {
     use FreezableTrait;
