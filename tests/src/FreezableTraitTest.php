@@ -42,6 +42,10 @@ class FreezableTraitTest extends AbstractTestCase
             'Failed asserting method "unfreeze" exists on Freezable object'
         );
         $this->assertTrue(
+            method_exists($freezable, 'isFrozen'),
+            'Failed asserting method "isFrozen" exists on Freezable object'
+        );
+        $this->assertTrue(
             method_exists($freezable, 'performFreeze'),
             'Failed asserting method "performFreeze" exists on Freezable object'
         );
@@ -54,13 +58,13 @@ class FreezableTraitTest extends AbstractTestCase
     /**
      * @coversNothing
      */
-    public function testIsFrozenPropertyExists()
+    public function testfrozenPropertyExists()
     {
         $freezable = $this->getFreezableObject();
 
-        $this->assertObjectHasAttribute('isFrozen', $freezable);
+        $this->assertObjectHasAttribute('frozen', $freezable);
         $this->assertFalse(
-            $freezable->isFrozen,
+            $freezable->isFrozen(),
             'Failed asserting "isFrozen" property is set to false in Freezable object'
         );
     }
@@ -82,7 +86,7 @@ class FreezableTraitTest extends AbstractTestCase
         $this->assertSame($freezableMock, $returned, 'Failed asserting "freeze" return $this');
 
         $this->assertTrue(
-            $freezableMock->isFrozen,
+            $freezableMock->isFrozen(),
             'Failed asserting "isFrozen" property is true after freezing'
         );
 
@@ -90,7 +94,7 @@ class FreezableTraitTest extends AbstractTestCase
         $this->assertSame($freezableMock, $returned, 'Failed asserting "freeze" return $this');
 
         $this->assertTrue(
-            $freezableMock->isFrozen,
+            $freezableMock->isFrozen(),
             'Failed asserting "isFrozen" property is true after freezing'
         );
     }
@@ -101,19 +105,20 @@ class FreezableTraitTest extends AbstractTestCase
     public function testUnfreeze()
     {
         $freezableMock = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'performUnfreeze'
+            'performUnfreeze',
         ]);
 
         $freezableMock
             ->expects($this->once())
             ->method('performUnfreeze');
 
-        $freezableMock->isFrozen = true;
+        $freezableMock->freeze();
+
         $returned = $freezableMock->unfreeze();
         $this->assertSame($freezableMock, $returned, 'Failed asserting "unfreeze" return $this');
 
         $this->assertFalse(
-            $freezableMock->isFrozen,
+            $freezableMock->isFrozen(),
             'Failed asserting "isFrozen" property is false after unfreezing'
         );
 
@@ -121,8 +126,23 @@ class FreezableTraitTest extends AbstractTestCase
         $this->assertSame($freezableMock, $returned, 'Failed asserting "unfreeze" return $this');
 
         $this->assertFalse(
-            $freezableMock->isFrozen,
+            $freezableMock->isFrozen(),
             'Failed asserting "isFrozen" property is false after unfreezing'
         );
+    }
+
+    /**
+     * @covers ::isFrozen
+     */
+    public function testIsFrozen()
+    {
+        $freezable = $this->getFreezableObject();
+        $this->assertFalse($freezable->isFrozen());
+
+        $freezable->freeze();
+        $this->assertTrue($freezable->isFrozen());
+
+        $freezable->unfreeze();
+        $this->assertFalse($freezable->isFrozen());
     }
 }

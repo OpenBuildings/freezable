@@ -42,7 +42,7 @@ class Item {
 
     public function getValue()
     {
-        return $this->isFrozen ? $this->value : $this->computeValue();
+        return $this->isFrozen() ? $this->value : $this->computeValue();
     }
 }
 ```
