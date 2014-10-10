@@ -1,0 +1,15 @@
+<phpunit
+  bootstrap="tests/bootstrap.php"
+  forceCoversAnnotation="true"
+  colors="true">
+  <testsuites>
+    <testsuite>
+      <directory>tests/src</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist>
+      <directory suffix=".php">src/</directory>
+    </whitelist>
+  </filter>
+</phpunit>
