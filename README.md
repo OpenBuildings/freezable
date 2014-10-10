@@ -8,12 +8,14 @@ Freezable
 
 Freeze values in objects
 
+Requires PHP 5.4 or above.
+
 Usage
 -----
 
 License
 -------
 
-Copyright (c) 2014, Clippings Ltd. Developed by Haralan Dobrev
+Copyright (c) 2014, Clippings Ltd. Developed by Ivan Kerin &amp; Haralan Dobrev
 
 Under BSD-3-Clause license, read LICENSE file.
