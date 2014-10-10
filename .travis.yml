@@ -21,3 +21,8 @@ script:
 after_script:
   - test -e build/logs/clover.xml && wget https://scrutinizer-ci.com/ocular.phar
   - test -e build/logs/clover.xml && php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+
+notifications:
+  email: false
+  slack:
+    secure: Qjr3Z9nDgeB6LKVfit3cUWb5p+Rc/kNml1hbO9caIni4o2UiQrjWYHl1c9sj++OdNWghfS0VkCijKS+PtdInyj0bVRouWO8SMsrSeUhWd5QiQNoqJpCDFR6N4K8ZKs3zsGtGkji8ZSEPr9x50IbadqW5JiU172ULesZkjsSJdnw=
