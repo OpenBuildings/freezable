@@ -13,6 +13,40 @@ Requires PHP 5.4 or above.
 Usage
 -----
 
+``` php
+<?php
+
+use Clippings\Freezable\FreezableTrait;
+
+class Item {
+
+    use FreezableTrait;
+
+    private $value = NULL;
+
+    public function performFreeze()
+    {
+        $this->value = $this->computeValue();
+    }
+
+    public function performUnfreeze()
+    {
+        $this->value = NULL;
+    }
+
+    private function computeValue()
+    {
+        // computation from external sources, database, other objects etc.
+        return pi() * pi();
+    }
+
+    public function getValue()
+    {
+        return $this->isFrozen ? $this->value : $this->computeValue();
+    }
+}
+```
+
 License
 -------
 
