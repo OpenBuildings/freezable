@@ -40,4 +40,22 @@ trait FreezableTrait
 
         return $this;
     }
+
+    /**
+     * Perform actual freezing.
+     * It could be achieved by simply storing dynamic value returned
+     * by a function in a property.
+     *
+     * @return void
+     */
+    abstract public function performFreeze();
+
+    /**
+     * Perform actual unfreezing.
+     * It should be the opposite of the freezeing.
+     * E.g. setting the property value to null.
+     *
+     * @return void
+     */
+    abstract public function performUnfreeze();
 }
