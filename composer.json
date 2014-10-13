@@ -14,5 +14,10 @@
     },
     "autoload": {
         "psr-4": {"Clippings\\Freezable\\": "src/"}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
     }
 }
