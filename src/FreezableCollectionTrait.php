@@ -13,7 +13,7 @@ trait FreezableCollectionTrait
 
     private static function ensureItemsAreTraversable($items)
     {
-        if (! is_array($items) AND ! $items instanceof \Traversable) {
+        if (! is_array($items) and ! $items instanceof \Traversable) {
             throw new \UnexpectedValueException(
                 'Collection returned from getItems() should be either an array or a Traversable object.'
             );
