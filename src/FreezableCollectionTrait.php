@@ -15,7 +15,7 @@ trait FreezableCollectionTrait
     {
         if (! is_array($items) and ! $items instanceof \Traversable) {
             throw new \UnexpectedValueException(
-                'Collection returned from getItems() should be either an array or a Traversable object.'
+                'Collection returned from getItems() must be either an array or a Traversable object.'
             );
         }
     }
@@ -30,8 +30,10 @@ trait FreezableCollectionTrait
         self::ensureItemsAreTraversable($items);
 
         foreach ($items as $item) {
-            if (! method_exists($item, 'freeze')) {
-                throw new \UnexpectedValueException('Item should use the FreezableTrait to be freezed');
+            if (! $item instanceof FreezableInterface) {
+                throw new \UnexpectedValueException(
+                    'Item must be instance of Clippings\Freezable\FreezableInterface to be freezed'
+                );
             }
 
             $item->freeze();
@@ -48,8 +50,10 @@ trait FreezableCollectionTrait
         self::ensureItemsAreTraversable($items);
 
         foreach ($items as $item) {
-            if (! method_exists($item, 'unfreeze')) {
-                throw new \UnexpectedValueException('Item should use the FreezableTrait to be unfreezed');
+            if (! $item instanceof FreezableInterface) {
+                throw new \UnexpectedValueException(
+                    'Item must be instance of Clippings\Freezable\FreezableInterface to be unfreezed'
+                );
             }
 
             $item->unfreeze();
@@ -57,7 +61,7 @@ trait FreezableCollectionTrait
     }
 
     /**
-     * @return array|Traversable
+     * @return FreezableInterface[]|Traversable array or traversable of FreezableInterface objects
      */
     abstract public function getItems();
 }

@@ -14,21 +14,6 @@ namespace Clippings\Freezable;
 trait FreezableTrait
 {
     /**
-     * @var boolean Is object frozen?
-     */
-    private $frozen = false;
-
-    /**
-     * Is the object frozen
-     *
-     * @return boolean
-     */
-    public function isFrozen()
-    {
-        return $this->frozen;
-    }
-
-    /**
      * Set `frozen` and execute `performFreeze()`
      *
      * @return self
@@ -37,7 +22,7 @@ trait FreezableTrait
     {
         if (! $this->isFrozen()) {
             $this->performFreeze();
-            $this->frozen = true;
+            $this->setFrozen(true);
         }
 
         return $this;
@@ -52,11 +37,26 @@ trait FreezableTrait
     {
         if ($this->isFrozen()) {
             $this->performUnfreeze();
-            $this->frozen = false;
+            $this->setFrozen(false);
         }
 
         return $this;
     }
+
+    /**
+     * Is the object frozen
+     *
+     * @return boolean
+     */
+    abstract public function isFrozen();
+
+    /**
+     * Set the frozen state
+     *
+     * @param boolean $frozen
+     * @return self
+     */
+    abstract protected function setFrozen($frozen);
 
     /**
      * Perform actual freezing.

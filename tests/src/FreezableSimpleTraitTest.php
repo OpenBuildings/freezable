@@ -3,9 +3,9 @@
 namespace Clippings\Freezable\Test;
 
 /**
- * @coversDefaultClass Clippings\Freezable\FreezableTrait
+ * @coversDefaultClass Clippings\Freezable\FreezableSimpleTrait
  */
-class FreezableTraitTest extends AbstractTestCase
+class FreezableSimpleTraitTest extends AbstractTestCase
 {
     /**
      * @coversNothing
@@ -13,8 +13,8 @@ class FreezableTraitTest extends AbstractTestCase
     public function testFreezableTraitExists()
     {
         $this->assertTrue(
-            trait_exists('Clippings\Freezable\FreezableTrait'),
-            'Failed asserting trait Clippings\Freezable\FreezableTrait is defined'
+            trait_exists('Clippings\Freezable\FreezableSimpleTrait'),
+            'Failed asserting trait Clippings\Freezable\FreezableSimpleTrait is defined'
         );
     }
 
@@ -23,7 +23,7 @@ class FreezableTraitTest extends AbstractTestCase
      */
     public function getFreezableObject()
     {
-        return new Freezable();
+        return new FreezableSimple();
     }
 
     /**
@@ -60,7 +60,22 @@ class FreezableTraitTest extends AbstractTestCase
     }
 
     /**
+     * @coversNothing
+     */
+    public function testFrozenPropertyExists()
+    {
+        $freezable = $this->getFreezableObject();
+
+        $this->assertObjectHasAttribute('frozen', $freezable);
+        $this->assertFalse(
+            $freezable->isFrozen(),
+            'Failed asserting "isFrozen" property is set to false in Freezable object'
+        );
+    }
+
+    /**
      * @covers ::freeze
+     * @covers ::setFrozen
      */
     public function testFreeze()
     {
@@ -119,5 +134,21 @@ class FreezableTraitTest extends AbstractTestCase
             $freezableMock->isFrozen(),
             'Failed asserting "isFrozen" property is false after unfreezing'
         );
+    }
+
+    /**
+     * @covers ::isFrozen
+     * @covers ::setFrozen
+     */
+    public function testIsFrozen()
+    {
+        $freezable = $this->getFreezableObject();
+        $this->assertFalse($freezable->isFrozen());
+
+        $freezable->freeze();
+        $this->assertTrue($freezable->isFrozen());
+
+        $freezable->unfreeze();
+        $this->assertFalse($freezable->isFrozen());
     }
 }
