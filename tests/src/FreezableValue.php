@@ -18,7 +18,7 @@ class FreezableValue implements FreezableInterface
         return $this->frozen;
     }
 
-    protected function setFrozen($frozen)
+    private function setFrozen($frozen)
     {
         $this->frozen = (bool) $frozen;
 
