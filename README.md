@@ -7,6 +7,7 @@ Freezable
 [![Latest Stable Version](https://poser.pugx.org/clippings/freezable/version.svg)](https://packagist.org/packages/clippings/freezable)
 [![Latest Unstable Version](https://poser.pugx.org/clippings/freezable/v/unstable.svg)](https://packagist.org/packages/clippings/freezable)
 [![Total Downloads](https://poser.pugx.org/clippings/freezable/downloads.svg)](https://packagist.org/packages/clippings/freezable)
+[![License](https://poser.pugx.org/clippings/freezable/license.svg)](https://packagist.org/packages/clippings/freezable)
 
 Freeze values in objects
 
