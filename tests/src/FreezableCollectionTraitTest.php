@@ -256,7 +256,7 @@ class FreezableCollectionTraitTest extends AbstractTestCase
                 new \stdClass(),
             ]));
 
-        $this->setExpectedException('UnexpectedValueException', 'Item should use the FreezableTrait to be freezed');
+        $this->setExpectedException('UnexpectedValueException', 'Item must be instance of Clippings\Freezable\FreezableInterface to be freezed');
         $freezableCollectionMock->performFreeze();
     }
 
@@ -276,7 +276,7 @@ class FreezableCollectionTraitTest extends AbstractTestCase
                 new \stdClass(),
             ]));
 
-        $this->setExpectedException('UnexpectedValueException', 'Item should use the FreezableTrait to be unfreezed');
+        $this->setExpectedException('UnexpectedValueException', 'Item must be instance of Clippings\Freezable\FreezableInterface to be unfreezed');
         $freezableCollectionMock->performUnfreeze();
     }
 
@@ -297,7 +297,7 @@ class FreezableCollectionTraitTest extends AbstractTestCase
 
         $this->setExpectedException(
             'UnexpectedValueException',
-            'Collection returned from getItems() should be either an array or a Traversable object.'
+            'Collection returned from getItems() must be either an array or a Traversable object.'
         );
 
         $freezableCollectionMock->performFreeze();
@@ -320,7 +320,7 @@ class FreezableCollectionTraitTest extends AbstractTestCase
 
         $this->setExpectedException(
             'UnexpectedValueException',
-            'Collection returned from getItems() should be either an array or a Traversable object.'
+            'Collection returned from getItems() must be either an array or a Traversable object.'
         );
 
         $freezableCollectionMock->performUnfreeze();

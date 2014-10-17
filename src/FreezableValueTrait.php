@@ -12,11 +12,6 @@ trait FreezableValueTrait
     use FreezableTrait;
 
     /**
-     * @var mixed
-     */
-    private $value;
-
-    /**
      * {@inheritdoc}
      */
     public function performFreeze()
@@ -33,14 +28,8 @@ trait FreezableValueTrait
     }
 
     /**
-     * @return mixed
-     */
-    public function getFrozenValue()
-    {
-        return $this->value;
-    }
-
-    /**
+     * Get the value - either the frozen one or compute it dynamically
+     *
      * @return mixed
      */
     public function getValue()
@@ -48,16 +37,6 @@ trait FreezableValueTrait
         return $this->isFrozen()
             ? $this->getFrozenValue()
             : $this->computeValue();
-    }
-
-    /**
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
     }
 
     /**
@@ -75,12 +54,29 @@ trait FreezableValueTrait
      */
     public function unfreezeValue()
     {
-        $this->value = null;
+        $this->setValue(null);
 
         return $this;
     }
 
     /**
+     * Get frozen value
+     *
+     * @return mixed
+     */
+    abstract public function getFrozenValue();
+
+    /**
+     * Set the frozen value
+     *
+     * @param mixed $value
+     * @return self
+     */
+    abstract public function setValue($value);
+
+    /**
+     * Compute the value to be frozen
+     *
      * @return mixed
      */
     abstract public function computeValue();
