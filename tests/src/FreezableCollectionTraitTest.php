@@ -2,6 +2,8 @@
 
 namespace Clippings\Freezable\Test;
 
+use UnexpectedValueException;
+
 /**
  * @coversDefaultClass Clippings\Freezable\FreezableCollectionTrait
  */
@@ -62,29 +64,29 @@ class FreezableCollectionTraitTest extends AbstractTestCase
      */
     public function testPerformFreeze()
     {
-        $freezableCollectionMock = $this->getMock('Clippings\Freezable\Test\FreezableCollection', [
-            'getItems'
-        ]);
+        $freezableCollectionMock = $this->getMockBuilder(FreezableCollection::class)
+            ->setMethods(['getItems'])
+            ->getMock();
 
-        $mock1 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'freeze'
-        ]);
+        $mock1 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['freeze'])
+            ->getMock();
 
         $mock1
             ->expects($this->once())
             ->method('freeze');
 
-        $mock2 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'freeze'
-        ]);
+        $mock2 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['freeze'])
+            ->getMock();
 
         $mock2
             ->expects($this->once())
             ->method('freeze');
 
-        $mock3 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'freeze'
-        ]);
+        $mock3 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['freeze'])
+            ->getMock();
 
         $mock3
             ->expects($this->once())
@@ -108,29 +110,29 @@ class FreezableCollectionTraitTest extends AbstractTestCase
      */
     public function testPerformUnfreeze()
     {
-        $freezableCollectionMock = $this->getMock('Clippings\Freezable\Test\FreezableCollection', [
-            'getItems'
-        ]);
+        $freezableCollectionMock = $this->getMockBuilder(FreezableCollection::class)
+            ->setMethods(['getItems'])
+            ->getMock();
 
-        $mock1 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'unfreeze'
-        ]);
+        $mock1 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['unfreeze'])
+            ->getMock();
 
         $mock1
             ->expects($this->once())
             ->method('unfreeze');
 
-        $mock2 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'unfreeze'
-        ]);
+        $mock2 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['unfreeze'])
+            ->getMock();
 
         $mock2
             ->expects($this->once())
             ->method('unfreeze');
 
-        $mock3 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'unfreeze'
-        ]);
+        $mock3 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['unfreeze'])
+            ->getMock();
 
         $mock3
             ->expects($this->once())
@@ -154,29 +156,29 @@ class FreezableCollectionTraitTest extends AbstractTestCase
      */
     public function testPerformFreezeOnTraversableObject()
     {
-        $freezableCollectionMock = $this->getMock('Clippings\Freezable\Test\FreezableCollection', [
-            'getItems'
-        ]);
+        $freezableCollectionMock = $this->getMockBuilder(FreezableCollection::class)
+            ->setMethods(['getItems'])
+            ->getMock();
 
-        $mock1 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'freeze'
-        ]);
+        $mock1 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['freeze'])
+            ->getMock();
 
         $mock1
             ->expects($this->once())
             ->method('freeze');
 
-        $mock2 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'freeze'
-        ]);
+        $mock2 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['freeze'])
+            ->getMock();
 
         $mock2
             ->expects($this->once())
             ->method('freeze');
 
-        $mock3 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'freeze'
-        ]);
+        $mock3 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['freeze'])
+            ->getMock();
 
         $mock3
             ->expects($this->once())
@@ -200,29 +202,29 @@ class FreezableCollectionTraitTest extends AbstractTestCase
      */
     public function testPerformUnfreezeOnTraversableObject()
     {
-        $freezableCollectionMock = $this->getMock('Clippings\Freezable\Test\FreezableCollection', [
-            'getItems'
-        ]);
+        $freezableCollectionMock = $this->getMockBuilder(FreezableCollection::class)
+            ->setMethods(['getItems'])
+            ->getMock();
 
-        $mock1 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'unfreeze'
-        ]);
+        $mock1 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['unfreeze'])
+            ->getMock();
 
         $mock1
             ->expects($this->once())
             ->method('unfreeze');
 
-        $mock2 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'unfreeze'
-        ]);
+        $mock2 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['unfreeze'])
+            ->getMock();
 
         $mock2
             ->expects($this->once())
             ->method('unfreeze');
 
-        $mock3 = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'unfreeze'
-        ]);
+        $mock3 = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['unfreeze'])
+            ->getMock();
 
         $mock3
             ->expects($this->once())
@@ -245,9 +247,9 @@ class FreezableCollectionTraitTest extends AbstractTestCase
      */
     public function testPerfomFreezeOnNotFreezableItem()
     {
-        $freezableCollectionMock = $this->getMock('Clippings\Freezable\Test\FreezableCollection', [
-            'getItems'
-        ]);
+        $freezableCollectionMock = $this->getMockBuilder(FreezableCollection::class)
+            ->setMethods(['getItems'])
+            ->getMock();
 
         $freezableCollectionMock
             ->expects($this->once())
@@ -256,7 +258,8 @@ class FreezableCollectionTraitTest extends AbstractTestCase
                 new \stdClass(),
             ]));
 
-        $this->setExpectedException('UnexpectedValueException', 'Item must be instance of Clippings\Freezable\FreezableInterface to be freezed');
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('Item must be instance of Clippings\Freezable\FreezableInterface to be freezed');
         $freezableCollectionMock->performFreeze();
     }
 
@@ -265,9 +268,9 @@ class FreezableCollectionTraitTest extends AbstractTestCase
      */
     public function testPerfomUnfreezeOnNotFreezableItem()
     {
-        $freezableCollectionMock = $this->getMock('Clippings\Freezable\Test\FreezableCollection', [
-            'getItems'
-        ]);
+        $freezableCollectionMock = $this->getMockBuilder(FreezableCollection::class)
+            ->setMethods(['getItems'])
+            ->getMock();
 
         $freezableCollectionMock
             ->expects($this->once())
@@ -276,7 +279,8 @@ class FreezableCollectionTraitTest extends AbstractTestCase
                 new \stdClass(),
             ]));
 
-        $this->setExpectedException('UnexpectedValueException', 'Item must be instance of Clippings\Freezable\FreezableInterface to be unfreezed');
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('Item must be instance of Clippings\Freezable\FreezableInterface to be unfreezed');
         $freezableCollectionMock->performUnfreeze();
     }
 
@@ -286,19 +290,17 @@ class FreezableCollectionTraitTest extends AbstractTestCase
      */
     public function testPerformFreezeOnNonTraversableCollection()
     {
-        $freezableCollectionMock = $this->getMock('Clippings\Freezable\Test\FreezableCollection', [
-            'getItems'
-        ]);
+        $freezableCollectionMock = $this->getMockBuilder(FreezableCollection::class)
+            ->setMethods(['getItems'])
+            ->getMock();
 
         $freezableCollectionMock
             ->expects($this->once())
             ->method('getItems')
             ->will($this->returnValue(new \stdClass()));
 
-        $this->setExpectedException(
-            'UnexpectedValueException',
-            'Collection returned from getItems() must be either an array or a Traversable object.'
-        );
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('Collection returned from getItems() must be either an array or a Traversable object.');
 
         $freezableCollectionMock->performFreeze();
     }
@@ -309,19 +311,17 @@ class FreezableCollectionTraitTest extends AbstractTestCase
      */
     public function testPerformUnfreezeOnNonTraversableCollection()
     {
-        $freezableCollectionMock = $this->getMock('Clippings\Freezable\Test\FreezableCollection', [
-            'getItems'
-        ]);
+        $freezableCollectionMock = $this->getMockBuilder(FreezableCollection::class)
+            ->setMethods(['getItems'])
+            ->getMock();
 
         $freezableCollectionMock
             ->expects($this->once())
             ->method('getItems')
             ->will($this->returnValue(new \stdClass()));
 
-        $this->setExpectedException(
-            'UnexpectedValueException',
-            'Collection returned from getItems() must be either an array or a Traversable object.'
-        );
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('Collection returned from getItems() must be either an array or a Traversable object.');
 
         $freezableCollectionMock->performUnfreeze();
     }

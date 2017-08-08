@@ -64,9 +64,9 @@ class FreezableTraitTest extends AbstractTestCase
      */
     public function testFreeze()
     {
-        $freezableMock = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'performFreeze'
-        ]);
+        $freezableMock = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['performFreeze'])
+            ->getMock();
 
         $freezableMock
             ->expects($this->once())
@@ -94,9 +94,9 @@ class FreezableTraitTest extends AbstractTestCase
      */
     public function testUnfreeze()
     {
-        $freezableMock = $this->getMock('Clippings\Freezable\Test\Freezable', [
-            'performUnfreeze',
-        ]);
+        $freezableMock = $this->getMockBuilder(Freezable::class)
+            ->setMethods(['performUnfreeze', ])
+            ->getMock();
 
         $freezableMock
             ->expects($this->once())

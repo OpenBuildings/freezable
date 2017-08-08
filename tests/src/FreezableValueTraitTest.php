@@ -90,9 +90,9 @@ class FreezableValueTraitTest extends AbstractTestCase
      */
     public function testPerformFreeze()
     {
-        $freezableMock = $this->getMock('Clippings\Freezable\Test\FreezableValue', [
-            'freezeValue'
-        ]);
+        $freezableMock = $this->getMockBuilder(FreezableValue::class)
+            ->setMethods(['freezeValue'])
+            ->getMock();
 
         $freezableMock
             ->expects($this->once())
@@ -107,9 +107,9 @@ class FreezableValueTraitTest extends AbstractTestCase
      */
     public function testPerformUnfreeze()
     {
-        $freezableMock = $this->getMock('Clippings\Freezable\Test\FreezableValue', [
-            'unfreezeValue'
-        ]);
+        $freezableMock = $this->getMockBuilder(FreezableValue::class)
+            ->setMethods(['unfreezeValue'])
+            ->getMock();
 
         $freezableMock
             ->expects($this->once())
@@ -124,9 +124,9 @@ class FreezableValueTraitTest extends AbstractTestCase
      */
     public function testFreezeValue()
     {
-        $freezableMock = $this->getMock('Clippings\Freezable\Test\FreezableValue', [
-            'getValue'
-        ]);
+        $freezableMock = $this->getMockBuilder(FreezableValue::class)
+            ->setMethods(['getValue'])
+            ->getMock();
 
         $freezableMock
             ->expects($this->exactly(2))
@@ -160,11 +160,9 @@ class FreezableValueTraitTest extends AbstractTestCase
      */
     public function testGetValue()
     {
-        $freezableMock = $this->getMock('Clippings\Freezable\Test\FreezableValue', [
-            'isFrozen',
-            'getFrozenValue',
-            'computeValue'
-        ]);
+        $freezableMock = $this->getMockBuilder(FreezableValue::class)
+            ->setMethods(['isFrozen', 'getFrozenValue', 'computeValue'])
+            ->getMock();
 
         $freezableMock
             ->expects($this->exactly(2))
